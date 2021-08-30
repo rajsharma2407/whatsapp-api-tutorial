@@ -2,15 +2,78 @@
 <html>
 <head>
 	<title>Whatsapp API by Ngekoding</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+	*{
+		font-family: 'Roboto', sans-serif;
+	}
+	body{
+		display: flex;
+		justify-content: center;
+		overflow:hidden;
+		background-color: #e5ddd5;
+		height:100vh;
+		overflow: hidden;
+	}
+	h1{
+		color:#00bfa5;
+	}
+	p{
+		color:#8d817b;
+	}
+	#app{
+		min-width:350px;
+		width:60%;
+		height:70%;
+	}
+	.logs{
+		height:0;
+		max-height: 300px;
+		padding:0 10px;
+		overflow-y: auto;
+	}
+	.container{
+		background-color: white;
+		padding:20px;
+		height:80%;
+		border-radius: 10px;
+		display: flex;
+		/* justify-content: space-around; */
+	}
+	#viewLogs{
+		padding:7px 10px;
+		border:1px solid #17a2b8;
+		border-radius: 5px;
+		color:#17a2b8;
+		cursor: pointer;
+	}
+	h3{
+		margin:30px;
+	}
+	@media(max-width:600px){
+		.container{
+			flex-direction: column;
+			/* align-items: center; */
+			height:90%;
+		}
+	h3{
+		text-align: center;
+	}
+	}
+</style>
 <body>
-
 	<div id="app">
 		<h1>Whatsapp API</h1>
-		<p>Powered by Ngekoding</p>
-		<img src="" alt="QR Code" id="qrcode">
-		<h3>Logs:</h3>
-		<ul class="logs"></ul>
+		<p>&copy; Powered by Ngekoding</p>
+		<div class="container">
+			<img src="" alt="QR Code" id="qrcode">
+			<div>
+				<h3>Logs: <span id="viewLogs"> Show</span></h3>
+				<ul class="logs" id="logs"></ul>
+			</div>
+		</div>
 	</div>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
@@ -36,6 +99,17 @@
 				$('#qrcode').hide();
 			});
 		});
+		var viewLogs = document.getElementById("viewLogs");
+		var logs = document.getElementById("logs");
+		viewLogs.onclick = function(){
+			if(viewLogs.innerText == "Show"){
+				viewLogs.innerText = "Hide";
+				logs.style.height = "100%";
+			}else{
+				viewLogs.innerText = "Show";
+				logs.style.height = 0;
+			}
+		}
 	</script>
 </body>
 </html>
